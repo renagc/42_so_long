@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:43:17 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 21:29:38 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 22:29:31 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_check_map_path(void **mlx, t_map *map)
 			if (map_cp.array[i][j] == 'C' || map_cp.array[i][j] == 'E')
 			{
 				ft_close_map_cp(&map_cp);
-				ft_free_close_map(mlx, map);
+				ft_free_close_map(1, "Map invalid, no possible path", mlx, map);
 			}
 		}
 	}

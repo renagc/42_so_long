@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:01:49 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 21:56:14 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 22:22:13 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,8 @@ t_image		ft_new_xpm_img(void *mlx, char *path);
 
 // map_utils.c
 t_vector	ft_get_player_position(t_map *map);
-void		ft_free_close_map(void **mlx, t_map *map);
+void		ft_free_close_map(int is_error, char *e_str,
+				void **mlx, t_map *map);
 
 //	gen_hooks.c
 int			ft_key_input(int key, t_program *game);

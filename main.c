@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 11:45:11 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 21:45:32 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 21:57:52 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_ac_check(int n)
 	if (n == 1)
 		ft_printf("You must choose a file\n");
 	else if (n > 2)
-		ft_printf("Program as more than 2 arguments\n");
+		ft_printf("Choose only one\n");
 	exit (0);
 }
 

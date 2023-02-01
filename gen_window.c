@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:37:16 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 21:46:49 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 22:38:10 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_close(t_program *game)
 {
 	ft_free_img_and_win(game);
-	ft_free_close_map(&game->mlx, &game->map);
+	ft_free_close_map(0, 0, &game->mlx, &game->map);
 	return (0);
 }
 
