@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:01:49 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 20:41:33 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 21:56:14 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,28 +94,28 @@ typedef struct s_program
 
 // -----------------------------  FUNCTIONS --------------------------------- //
 
+//	map_check_rules.c
+t_map		ft_open_map(void **mlx, char *path);
+
+//	draw.c
+t_chars		ft_get_char_img(t_program *game);
+void		ft_draw_background(t_program *game);
+void		ft_free_img_and_win(t_program *game);
+
 //	gen_window.c
 t_window	ft_new_window(t_program *game, int widht, int height, char *name);
 
 //	gen_image.c
 t_image		ft_new_xpm_img(void *mlx, char *path);
 
+// map_utils.c
+t_vector	ft_get_player_position(t_map *map);
+void		ft_free_close_map(void **mlx, t_map *map);
+
 //	gen_hooks.c
 int			ft_key_input(int key, t_program *game);
 
-t_map		ft_open_map(void **mlx, char *path);
-
+//	map_check_path.c
 void		ft_check_map_path(void **mlx, t_map *map);
-
-t_vector	ft_get_player_position(t_map *map);
-
-t_chars		ft_get_char_img(t_program *game);
-void		ft_draw_background(t_program *game);
-
-void		ft_close_map(t_map *map);
-
-void		ft_free_all(t_program *game);
-
-void		ft_free_map(void **mlx, t_map *map);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 13:03:41 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 18:04:37 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 21:32:23 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_key_input_check_wall(t_program *game, int keycode)
+static int	ft_key_input_check_wall(t_program *game, int keycode)
 {
 	int	x;
 	int	y;
@@ -34,7 +34,7 @@ int	ft_key_input_check_wall(t_program *game, int keycode)
 	return (1);
 }
 
-void	ft_key_input_rm_key(t_program *game)
+static void	ft_key_input_rm_key(t_program *game)
 {
 	int	x;
 	int	y;
@@ -45,7 +45,7 @@ void	ft_key_input_rm_key(t_program *game)
 		game->map.array[y][x] = '0';
 }
 
-void	ft_key_input_quit(t_program *game)
+static void	ft_key_input_quit(t_program *game)
 {
 	int	x;
 	int	y;
@@ -68,9 +68,8 @@ void	ft_key_input_quit(t_program *game)
 	y = game->player_position.y;
 	if (game->map.array[y][x] == 'E' && close)
 	{
-		ft_free_all(game);
-		free(game->mlx);
-		ft_close_map(&game->map);
+		ft_free_img_and_win(game);
+		ft_free_close_map(&game->mlx, &game->map);
 	}
 }
 
@@ -79,9 +78,8 @@ int	ft_key_input(int keycode, t_program *game)
 	mlx_clear_window(game->mlx, game->window.reference);
 	if (keycode == key_esc)
 	{
-		ft_free_all(game);
-		free(game->mlx);
-		ft_close_map(&game->map);
+		ft_free_img_and_win(game);
+		ft_free_close_map(&game->mlx, &game->map);
 	}
 	else if (keycode == key_right && ft_key_input_check_wall(game, keycode))
 		game->player_position.x += 1;

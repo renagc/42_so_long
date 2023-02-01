@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:43:17 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 20:47:45 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 21:29:38 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,30 +40,6 @@ static void	ft_check_map_path_possible(t_map *map, int x, int y)
 		ft_check_map_path_possible(map, x, y + 1);
 }
 
-t_vector	ft_get_player_position(t_map *map)
-{
-	int			i;
-	int			j;
-	t_vector	player;
-
-	i = 0;
-	while (map->array[i])
-	{
-		j = 0;
-		while (map->array[i][j])
-		{
-			if (map->array[i][j] == 'P')
-			{
-				player.x = j;
-				player.y = i;
-			}
-			j++;
-		}
-		i++;
-	}
-	return (player);
-}
-
 static void	ft_close_map_cp(t_map *map_cp)
 {
 	int	i;
@@ -95,7 +71,7 @@ void	ft_check_map_path(void **mlx, t_map *map)
 			if (map_cp.array[i][j] == 'C' || map_cp.array[i][j] == 'E')
 			{
 				ft_close_map_cp(&map_cp);
-				ft_free_map(mlx, map);
+				ft_free_close_map(mlx, map);
 			}
 		}
 	}

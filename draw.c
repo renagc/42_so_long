@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 12:06:49 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 17:52:38 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 21:23:07 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ t_chars	ft_get_char_img(t_program *game)
 	chars.floor = ft_new_xpm_img(game->mlx, "textures/floor.xpm");
 	chars.exit = ft_new_xpm_img(game->mlx, "textures/exit.xpm");
 	chars.wall = ft_new_xpm_img(game->mlx, "textures/wall.xpm");
-
 	return (chars);
 }
 
-void	ft_free_all(t_program *game)
+void	ft_free_img_and_win(t_program *game)
 {
 	mlx_destroy_image(game->mlx, game->map.chars.key.reference);
 	mlx_destroy_image(game->mlx, game->map.chars.floor.reference);
@@ -32,7 +31,6 @@ void	ft_free_all(t_program *game)
 	mlx_destroy_image(game->mlx, game->map.chars.wall.reference);
 	mlx_destroy_image(game->mlx, game->player.reference);
 	mlx_destroy_window(game->mlx, game->window.reference);
-	mlx_destroy_display(game->mlx);
 }
 
 void	ft_draw_background(t_program *game)

@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 11:45:11 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 20:04:46 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 21:45:32 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_ac_check(int n)
 	exit (0);
 }
 
-void	ft_check_ext_and_file(char *str)
+static void	ft_check_ext_and_file(char *str)
 {
 	int		i;
 

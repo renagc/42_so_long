@@ -4,7 +4,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
-SOURCES = main.c gen_hooks.c gen_window.c gen_image.c map.c map_check_path.c draw.c
+SOURCES = main.c gen_hooks.c gen_window.c gen_image.c map_check_rules.c map_check_path.c draw.c map_utils.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
