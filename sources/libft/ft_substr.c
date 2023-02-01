@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-c <rgomes-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:53:13 by rgomes-c          #+#    #+#             */
-/*   Updated: 2022/11/02 09:19:35 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:09:16 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*sp;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	if (start > ft_strlen(s))
 		return (ft_calloc(1, 1));
 	if ((start + len) > ft_strlen(s))

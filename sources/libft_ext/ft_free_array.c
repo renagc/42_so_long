@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 19:30:31 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/01/27 19:51:48 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:22:21 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 void	ft_free_array(char **array)
 {
-	int	i;
+	int		i;
 
-	i = 0;
-	while (array[i])
-		i++;
-	while (array[--i])
+	i = -1;
+	while (array[++i])
 		free(array[i]);
 	free(array);
 }

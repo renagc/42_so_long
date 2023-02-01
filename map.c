@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:13:35 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/01/30 12:07:26 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 17:07:34 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,16 @@ static char	**ft_map_to_array(char *path)
 	close (fd);
 	map_array = ft_split(file, '\n');
 	free(file);
-	free(next_line);
 	return (map_array);
 }
 
 void	ft_close_map(t_map *map)
 {
-	while (--map->size.y)
-		free(map->array[map->size.y]);
+	int		i;
+
+	i = -1;
+	while (map->array[++i])
+		free(map->array[i]);
 	free(map->array);
 	exit(0);
 }

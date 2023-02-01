@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:01:49 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/01/30 12:20:29 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:11:25 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ typedef struct s_program
 // -----------------------------  FUNCTIONS --------------------------------- //
 
 //	gen_window.c
-t_window	ft_new_window(void *mlx, int widht, int height, char *name);
+t_window	ft_new_window(t_program *game, int widht, int height, char *name);
 
 //	gen_image.c
 t_image		ft_new_xpm_img(void *mlx, char *path);
@@ -113,5 +113,7 @@ t_chars		ft_get_char_img(t_program *game);
 void		ft_draw_background(t_program *game);
 
 void		ft_close_map(t_map *map);
+
+void		ft_free_all(t_program *game);
 
 #endif

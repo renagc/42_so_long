@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 13:03:41 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/01/30 13:42:35 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:04:37 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,22 @@ void	ft_key_input_quit(t_program *game)
 	x = game->player_position.x;
 	y = game->player_position.y;
 	if (game->map.array[y][x] == 'E' && close)
+	{
+		ft_free_all(game);
+		free(game->mlx);
 		ft_close_map(&game->map);
+	}
 }
 
 int	ft_key_input(int keycode, t_program *game)
 {
 	mlx_clear_window(game->mlx, game->window.reference);
 	if (keycode == key_esc)
+	{
+		ft_free_all(game);
+		free(game->mlx);
 		ft_close_map(&game->map);
+	}
 	else if (keycode == key_right && ft_key_input_check_wall(game, keycode))
 		game->player_position.x += 1;
 	else if (keycode == key_left && ft_key_input_check_wall(game, keycode))

@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 11:45:11 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/01/30 12:30:06 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:11:58 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int ac, char **av)
 	game.map.chars = ft_get_char_img(&game);
 	x = game.map.size.x * 64;
 	y = game.map.size.y * 64;
-	game.window = ft_new_window(game.mlx, x, y, "so_long");
+	game.window = ft_new_window(&game, x, y, "so_long");
 	game.player = ft_new_xpm_img(game.mlx, "textures/player.xpm");
 	game.player_position = ft_get_player_position(&game.map);
 	ft_draw_background(&game);
