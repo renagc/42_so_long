@@ -12,7 +12,6 @@ all:	$(NAME)
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
-	rm $(OBJS)
 
 clean:
 	$(RM) $(OBJS)

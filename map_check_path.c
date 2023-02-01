@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:43:17 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/01/30 13:41:58 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 20:47:45 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,17 @@ t_vector	ft_get_player_position(t_map *map)
 	return (player);
 }
 
-static void	ft_free_close_map(t_map *map, t_map *map_cp)
+static void	ft_close_map_cp(t_map *map_cp)
 {
 	int	i;
 
 	i = -1;
-	while (map->array[++i])
-		free(map->array[i]);
-	free(map->array);
-	i = -1;
 	while (map_cp->array[++i])
 		free(map_cp->array[i]);
 	free(map_cp->array);
-	exit(0);
 }
 
-void	ft_check_map_path(t_map *map)
+void	ft_check_map_path(void **mlx, t_map *map)
 {
 	t_map			map_cp;
 	t_vector		player_position;
@@ -98,11 +93,11 @@ void	ft_check_map_path(t_map *map)
 		while (map_cp.array[i][++j])
 		{
 			if (map_cp.array[i][j] == 'C' || map_cp.array[i][j] == 'E')
-				ft_free_close_map(map, &map_cp);
+			{
+				ft_close_map_cp(&map_cp);
+				ft_free_map(mlx, map);
+			}
 		}
 	}
-	i = -1;
-	while (map_cp.array[++i])
-		free(map_cp.array[i]);
-	free(map_cp.array);
+	ft_close_map_cp(&map_cp);
 }

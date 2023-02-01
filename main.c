@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 11:45:11 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 18:11:58 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 20:04:46 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,24 @@
 
 static void	ft_ac_check(int n)
 {
+	ft_printf("Error\n");
 	if (n == 1)
-		perror("You must choose a map");
+		ft_printf("You must choose a file\n");
 	else if (n > 2)
-		perror("Program as more than 2 arguments");
+		ft_printf("Program as more than 2 arguments\n");
 	exit (0);
+}
+
+void	ft_check_ext_and_file(char *str)
+{
+	int		i;
+
+	i = ft_strlen(str) - 4;
+	if (ft_strncmp(&str[i], ".ber", 4) != 0)
+	{
+		ft_printf("Error\nMap must have .ber extension\n");
+		exit(0);
+	}
 }
 
 int	main(int ac, char **av)
@@ -29,8 +42,9 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		ft_ac_check(ac);
+	ft_check_ext_and_file(av[1]);
 	game.mlx = mlx_init();
-	game.map = ft_open_map(av[1]);
+	game.map = ft_open_map(&game.mlx, av[1]);
 	game.map.chars = ft_get_char_img(&game);
 	x = game.map.size.x * 64;
 	y = game.map.size.y * 64;

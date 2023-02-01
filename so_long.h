@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:01:49 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 18:11:25 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 20:41:33 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ t_image		ft_new_xpm_img(void *mlx, char *path);
 //	gen_hooks.c
 int			ft_key_input(int key, t_program *game);
 
-t_map		ft_open_map(char *path);
+t_map		ft_open_map(void **mlx, char *path);
 
-void		ft_check_map_path(t_map *map);
+void		ft_check_map_path(void **mlx, t_map *map);
 
 t_vector	ft_get_player_position(t_map *map);
 
@@ -115,5 +115,7 @@ void		ft_draw_background(t_program *game);
 void		ft_close_map(t_map *map);
 
 void		ft_free_all(t_program *game);
+
+void		ft_free_map(void **mlx, t_map *map);
 
 #endif

@@ -6,11 +6,18 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:13:35 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 17:07:34 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/01 20:52:22 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_free_map(void **mlx, t_map *map)
+{
+	mlx_destroy_display(*mlx);
+	free(*mlx);
+	ft_close_map(map);
+}
 
 /*le o mapa e calcula o numero de linhas*/
 static char	**ft_map_to_array(char *path)
@@ -23,10 +30,7 @@ static char	**ft_map_to_array(char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 3)
-	{
-		perror("Error opening file");
 		return (NULL);
-	}
 	file = ft_calloc(1, 1);
 	while (1)
 	{
@@ -49,14 +53,17 @@ void	ft_close_map(t_map *map)
 	int		i;
 
 	i = -1;
-	while (map->array[++i])
-		free(map->array[i]);
-	free(map->array);
+	if (map->array)
+	{
+		while (map->array[++i])
+			free(map->array[i]);
+		free(map->array);
+	}
 	exit(0);
 }
 
 /*verifica os caracteres e se existe player, exit e key*/
-static void	ft_check_map_chars(t_map *map)
+static void	ft_check_map_chars(void **mlx, t_map *map)
 {
 	int			i;
 	int			j;
@@ -74,7 +81,7 @@ static void	ft_check_map_chars(t_map *map)
 			if (!ft_iscinstr("01PCE", map->array[i][j]))
 			{
 				perror("Map does not respect chars (01PCE)");
-				ft_close_map(map);
+				ft_free_map(mlx, map);
 			}
 			else if (map->array[i][j] == 'E')
 				chars.exit += 1;
@@ -87,11 +94,11 @@ static void	ft_check_map_chars(t_map *map)
 	if (chars.player != 1 || chars.exit != 1 || chars.key == 0)
 	{
 		perror("Map must contain: 1x E; at least 1x C; 1x P");
-		ft_close_map(map);
+		ft_free_map(mlx, map);
 	}
 }
 
-static void	ft_check_map_walls(t_map *map)
+static void	ft_check_map_walls(void **mlx, t_map *map)
 {
 	int		i;
 	int		j;
@@ -103,16 +110,16 @@ static void	ft_check_map_walls(t_map *map)
 		while (map->array[i][++j] && j < map->size.x)
 		{
 			if ((i == 0 || i == (map->size.y - 1)) && map->array[i][j] != '1')
-				ft_close_map(map);
+				ft_free_map(mlx, map);
 			else if ((j == 0 || j == (map->size.x - 1))
 				&& map->array[i][j] != '1')
-				ft_close_map(map);
+				ft_free_map(mlx, map);
 		}
 	}
 }
 
 /*verifica se é quadrado e se todas as linhas tem o mesmo tamanho*/
-static void	ft_check_map_size(t_map *map)
+static void	ft_check_map_size(void *mlx, t_map *map)
 {
 	int			i;
 	int			j;
@@ -124,26 +131,26 @@ static void	ft_check_map_size(t_map *map)
 		while (map->array[i][j])
 			j++;
 		if ((j - 1) != map->size.x)
-			ft_close_map(map);
+			ft_free_map(mlx, map);
 	}
 	if (i != map->size.y || map->size.x == map->size.y)
-		ft_close_map(map);
+		ft_free_map(mlx, map);
 }
 
-t_map	ft_open_map(char *path)
+t_map	ft_open_map(void **mlx, char *path)
 {
 	t_map	map;
 
 	map.array = ft_map_to_array(path);
-	if (!map.array)
-		exit (0);
+	if (!map.array[0])
+		ft_free_map(mlx, &map);
 	map.size.x = ft_strlen(map.array[0]) - 1;
 	map.size.y = 0;
 	while (map.array[map.size.y])
 		map.size.y++;
-	ft_check_map_size(&map);
-	ft_check_map_walls(&map);
-	ft_check_map_chars(&map);
-	ft_check_map_path(&map);
+	ft_check_map_size(mlx, &map);
+	ft_check_map_walls(mlx, &map);
+	ft_check_map_chars(mlx, &map);
+	ft_check_map_path(mlx, &map);
 	return (map);
 }
