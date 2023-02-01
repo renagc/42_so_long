@@ -16,7 +16,6 @@ $(NAME): $(OBJECTS)
 	make -C sources/libft
 	make -C sources/libft_ext
 	$(CC) $(CFLAGS) $(SOURCES) sources/get_next_line/get_next_line.a sources/libft_ext/libft_ext.a sources/libft/libft.a -lbsd -lmlx -lXext -lX11 -o run
-	rm $(OBJECTS)
 
 clean:
 	make clean -C sources/ft_printf
