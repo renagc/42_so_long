@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rgomes-c <rgomes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 12:06:49 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 21:23:07 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:11:22 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ void	ft_draw_background(t_program *game)
 		{
 			if (game->map.array[y][x] == '1')
 				mlx_put_image_to_window(game->mlx, game->window.reference,
-					game->map.chars.wall.reference, x * 64, y * 64);
+					game->map.chars.wall.reference, x * 32, y * 32);
 			else
 				mlx_put_image_to_window(game->mlx, game->window.reference,
-					game->map.chars.floor.reference, x * 64, y * 64);
+					game->map.chars.floor.reference, x * 32, y * 32);
 			if (game->map.array[y][x] == 'E')
 				mlx_put_image_to_window(game->mlx, game->window.reference,
-					game->map.chars.exit.reference, x * 64, y * 64);
+					game->map.chars.exit.reference, x * 32, y * 32);
 			else if (game->map.array[y][x] == 'C')
 				mlx_put_image_to_window(game->mlx, game->window.reference,
-					game->map.chars.key.reference, x * 64, y * 64);
+					game->map.chars.key.reference, x * 32, y * 32);
 		}
 	}
 }

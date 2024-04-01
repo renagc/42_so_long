@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rgomes-c <rgomes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 11:45:11 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 21:57:52 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:12:54 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ int	main(int ac, char **av)
 	game.mlx = mlx_init();
 	game.map = ft_open_map(&game.mlx, av[1]);
 	game.map.chars = ft_get_char_img(&game);
-	x = game.map.size.x * 64;
-	y = game.map.size.y * 64;
+	x = game.map.size.x * 32;
+	y = game.map.size.y * 32;
 	game.window = ft_new_window(&game, x, y, "so_long");
 	game.player = ft_new_xpm_img(game.mlx, "textures/player.xpm");
 	game.player_position = ft_get_player_position(&game.map);
 	ft_draw_background(&game);
 	mlx_put_image_to_window(game.mlx, game.window.reference,
-		game.player.reference, game.player_position.x * 64,
-		game.player_position.y * 64);
+		game.player.reference, game.player_position.x * 32,
+		game.player_position.y * 32);
 	game.map.moves = 0;
 	mlx_key_hook(game.window.reference, *ft_key_input, &game);
 	mlx_loop(game.mlx);

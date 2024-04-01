@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gen_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rgomes-c <rgomes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 13:03:41 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 22:32:16 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:12:18 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	ft_key_input(int keycode, t_program *game)
 	ft_key_input_quit(game);
 	ft_draw_background(game);
 	mlx_put_image_to_window(game->mlx, game->window.reference,
-		game->player.reference, game->player_position.x * 64,
-		game->player_position.y * 64);
+		game->player.reference, game->player_position.x * 32,
+		game->player_position.y * 32);
 	return (0);
 }

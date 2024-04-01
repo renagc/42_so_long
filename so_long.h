@@ -3,19 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rgomes-c <rgomes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:01:49 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/01 22:22:13 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:06:17 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
+
 // ------------------------------- INCLUDES --------------------------------- //
 
-# include <mlx.h>
+# include "mlx-linux/mlx.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
@@ -24,8 +28,7 @@
 # include "sources/ft_printf/ft_printf.h"
 # include "sources/libft/libft.h"
 # include "sources/libft_ext/libft_ext.h"
-# include "sources/get_next_line/get_next_line.h"
-# include "sources/get_next_line/get_next_line_bonus.h"
+# include "get_next_line/get_next_line.h"
 
 // -------------------------------- MACROS ---------------------------------- //
 
